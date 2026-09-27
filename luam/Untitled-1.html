@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Villa do Aroma — Lanchonete e Cafeteria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F1DFAE;--cream-2:#F8ECC7;--ink:#1F1206;--coffee:#4A2C17;--terracotta:#8B4A1F;--gold:#C9974F;--gold-soft:#E3BE7C;--radius:20px;--art:url("fundo.jpg");--cover:url("capacordel.jpg")}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{background:var(--cream) var(--art) center/cover no-repeat fixed;color:var(--ink);font-family:Arial,sans-serif;min-height:100vh;overflow-x:hidden;padding-bottom:calc(82px + env(safe-area-inset-bottom))}
+.wrap{width:min(100% - 32px,760px);margin:0 auto}
+/* hero */
+.hero{min-height:70svh;position:relative;display:flex;align-items:flex-end;justify-content:center;overflow:hidden;background:linear-gradient(to bottom,rgba(31,18,6,.05)0%,rgba(31,18,6,.12)45%,rgba(31,18,6,.78)100%)}
+.hero .wrap{width:100%;padding-bottom:48px}
+.hero-content{color:#fff;text-align:center;max-width:620px;margin:auto}
+.hero-kicker{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:12px;font-weight:700}
+.hero h1{font-family:Georgia,serif;font-size:clamp(2.5rem,12vw,5rem);line-height:.95;font-weight:500;margin-bottom:14px}
+.hero p{font-family:Georgia,serif;font-size:1.05rem;line-height:1.55;color:rgba(255,255,255,.9);max-width:42ch;margin:0 auto 24px}
+.hero-buttons{display:flex;justify-content:center;gap:10px}
+.hero-button{min-height:48px;display:flex;align-items:center;justify-content:center;padding:0 20px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.92rem;transition:.2s ease}
+.hero-button.primary{background:var(--gold);color:var(--ink)}
+.hero-button.secondary{border:1px solid rgba(255,255,255,.55);color:#fff;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+.hero-button:active{transform:scale(.97)}
+/* cordel / caderno 3D */
+.cordel-fechado{appearance:none;-webkit-appearance:none;border:0;background:transparent;padding:0;width:min(346px,92vw);aspect-ratio:346/488;margin:0 auto 42px;display:block;position:relative;cursor:pointer;perspective:1400px;filter:drop-shadow(0 14px 18px rgba(31,18,6,.25))}
+.cordel-fechado::before,.cordel-fechado::after{content:"";position:absolute;inset:0;z-index:-1;border:3px solid #2B1709;border-radius:5px 12px 12px 5px}
+.cordel-fechado::before{background:#D9B16C;transform:translate(7px,8px) rotate(1.1deg)}
+.cordel-fechado::after{background:#CBA062;transform:translate(13px,15px) rotate(2.1deg)}
+.caderno{position:relative;display:block;width:100%;height:100%;transform-style:preserve-3d;transition:transform .25s ease}
+.caderno:hover{transform:translateY(-4px) rotate(-.5deg)}
+.cordel-convite{display:flex;align-items:center;justify-content:center;gap:10px;margin:-12px auto 18px;color:var(--terracotta);font-size:.82rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;animation:convitePulse 1.8s ease-in-out infinite}
+.cordel-convite .seta{display:inline-flex;font-size:1.35rem;line-height:1;animation:conviteSeta 1s ease-in-out infinite}
+.cordel-convite .toque-icone{width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;border:2px solid currentColor;border-radius:50%;font-size:.78rem}
+@keyframes convitePulse{0%,100%{opacity:.72}50%{opacity:1}}
+@keyframes conviteSeta{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.caderno-capa{position:absolute;inset:0;z-index:3;overflow:hidden;transform-origin:left center;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.2,.75,.25,1);border-radius:5px 12px 12px 5px;background:#171310;box-shadow:7px 9px 0 #8B5A2B,12px 13px 18px rgba(31,18,6,.2);backface-visibility:hidden}
+.caderno-capa::before{content:"";position:absolute;inset:0;background:radial-gradient(circle,#F3E6C4 1.8px,transparent 2px)0 0/15px 15px;pointer-events:none;opacity:.25}
+.caderno-capa-conteudo{position:absolute;inset:15px;border:4px solid #171310;border-radius:3px 9px 9px 3px;background:var(--cover) center/cover no-repeat,#F3E6C4}
+.cordel-fechado.aberto .caderno-capa{transform:rotateY(-155deg)}
+.cordel-fechado.aberto .caderno{transform:translateX(8px)}
+.caderno-folha{position:absolute;inset:5px 5px 5px 14px;z-index:1;padding:22px 20px 16px 40px;border:3px solid #2B1709;border-radius:3px 10px 10px 3px;background:#E2C083;box-shadow:inset 0 0 25px rgba(70,34,8,.12),4px 5px 0 #9C6C38;text-align:left;font-family:Georgia,serif;display:flex;flex-direction:column;overflow:hidden}
+.caderno-folha h3{text-align:center;font-size:1.3rem;margin-bottom:2px}
+.folha-subtitulo{text-align:center;font-style:italic;font-size:.72rem;color:var(--coffee);margin-bottom:10px;display:block}
+.folha-cardapio{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:7px;padding-right:4px}
+.folha-item{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px dashed rgba(43,23,9,.4);padding-bottom:6px}
+.folha-nome{font-size:.86rem;line-height:1.3}
+.folha-desc{display:block;font-family:Arial,sans-serif;font-size:.66rem;color:var(--coffee);margin-top:2px}
+.folha-preco{flex-shrink:0;font-weight:700;font-size:.86rem;color:var(--terracotta)}
+.toque{display:block;text-align:center;margin-top:10px;font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;color:var(--coffee)}
+.espiral{position:absolute;left:-4px;top:14px;bottom:14px;width:24px;z-index:5;display:flex;flex-direction:column;justify-content:space-around;pointer-events:none}
+.espiral i{display:block;width:22px;height:12px;border:4px solid #241207;border-left:0;border-radius:0 50% 50% 0}
+/* seções */
+.rule{border:0;border-top:1px solid rgba(31,18,6,.22);max-width:760px;margin:0 auto}
+section{padding:64px 0;background:rgba(241,223,174,.94)}
+.section-head{text-align:center;margin-bottom:30px}
+.section-head h2{font-family:Georgia,serif;font-weight:600;font-size:clamp(2rem,8vw,2.6rem);line-height:1.1}
+.section-head p{color:var(--coffee);max-width:48ch;margin:12px auto 0;font-size:.96rem;line-height:1.5}
+.sobre p{font-family:Georgia,serif;font-size:1.08rem;line-height:1.7;text-align:center;max-width:52ch;margin:0 auto 18px}
+/* cardápio em carrossel */
+.menu-list{display:flex;flex-direction:column;gap:14px}
+.menu-item{display:flex;align-items:stretch;min-height:132px;background:#fff;border-radius:18px;box-shadow:0 8px 20px rgba(31,18,6,.10);overflow:hidden;transition:transform .2s ease}
+.menu-item:active{transform:scale(.985)}
+.menu-item .info{flex:1;min-width:0;padding:14px 12px 14px 16px;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.menu-item .name{display:block;font-family:Georgia,serif;font-weight:700;font-size:1rem;line-height:1.25;color:var(--ink)}
+.menu-item .desc{display:block;font-size:.78rem;color:#8b8b8b;margin-top:2px;line-height:1.4}
+.menu-item .price{font-weight:800;color:var(--terracotta);font-size:1.02rem;margin-top:2px}
+.menu-item .foto{position:relative;flex:0 0 118px;background:#eee}
+.menu-item .foto img{width:100%;height:100%;object-fit:cover;display:block}
+.menu-item .add{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:var(--terracotta);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.15rem;font-weight:800;box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.band{background:var(--ink);color:var(--cream-2)}
+.band .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:58px 0}
+.band h3{font-family:Georgia,serif;font-weight:500;font-style:italic;font-size:1.4rem;margin-bottom:12px;color:var(--gold-soft)}
+.band p,.band address{font-style:normal;font-size:.94rem;line-height:1.75;color:rgba(245,234,201,.85)}
+footer{text-align:center;padding:42px 24px 38px;background:rgba(241,223,174,.96)}
+.fmark{font-family:Georgia,serif;font-style:italic;font-size:1.4rem}
+.social{display:flex;justify-content:center;gap:12px;margin-top:20px}
+.social a{min-height:44px;padding:0 18px;display:flex;align-items:center;justify-content:center;color:var(--ink);text-decoration:none;border:1px solid rgba(31,18,6,.2);border-radius:999px;font-size:.86rem;font-weight:700}
+.fine{margin-top:25px;font-size:.75rem;color:var(--coffee);opacity:.75}
+.mobile-nav{position:fixed;z-index:1000;left:12px;right:12px;bottom:calc(8px + env(safe-area-inset-bottom));height:58px;display:flex;align-items:center;justify-content:space-around;background:rgba(31,18,6,.94);border:1px solid rgba(255,255,255,.12);border-radius:22px;box-shadow:0 12px 35px rgba(0,0,0,.25);backdrop-filter:blur(14px)}
+.mobile-nav a{height:54px;min-width:72px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;color:rgba(255,255,255,.68);text-decoration:none;font-size:.68rem;font-weight:700;border-radius:16px;transition:.2s ease}
+.mobile-nav a span{font-size:1.15rem;line-height:1}
+.mobile-nav a.active{color:var(--gold-soft);background:rgba(201,151,79,.12)}
+.mobile-nav a:active{transform:scale(.94)}
+/* mini player de som ambiente */
+.som-player{position:fixed;z-index:999;right:14px;bottom:calc(78px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:8px;background:rgba(31,18,6,.92);color:#fff;padding:8px 14px 8px 8px;border-radius:999px;box-shadow:0 10px 25px rgba(0,0,0,.25);font-size:.76rem;font-weight:700;opacity:0;transform:translateY(8px);pointer-events:none;transition:.3s ease}
+.som-player.ativo{opacity:1;transform:translateY(0);pointer-events:auto}
+.som-player button{background:var(--gold);color:var(--ink);border:0;width:30px;height:30px;flex-shrink:0;border-radius:50%;font-size:.85rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
+@media(min-width:700px){body{padding-bottom:0}.mobile-nav{display:none}.som-player{bottom:20px}.hero{min-height:82vh}.hero .wrap{padding-bottom:80px}section{padding:76px 0}.menu-list{gap:16px}}
+@media(max-width:560px){.band .wrap{grid-template-columns:1fr;gap:30px}}
+@media(max-width:380px){.wrap{width:min(100% - 24px,760px)}.hero{min-height:68svh}.hero .wrap{padding-bottom:38px}.hero h1{font-size:2.35rem}.hero p{font-size:.96rem}.hero-buttons{flex-direction:column;width:100%;max-width:280px;margin:auto}.hero-button{width:100%}section{padding:52px 0}.menu-item{padding:16px}.menu-item .name{font-size:1rem}.menu-item .desc{font-size:.78rem}.menu-item .price{font-size:.92rem}.caderno-folha{padding-left:36px;padding-right:14px}.folha-nome{font-size:.8rem}.folha-preco{font-size:.8rem}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<header class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-content">
+      <span class="hero-kicker">Lanchonete &amp; Cafeteria</span>
+      <h1>Villa do Aroma</h1>
+      <p>Café passado na hora, pão saindo do forno e aquele lugar gostoso para ficar mais um pouco.</p>
+      <div class="hero-buttons">
+        <a href="#cardapio" class="hero-button primary">Ver cardápio</a>
+        <a href="#local" class="hero-button secondary">Onde estamos</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<hr class="rule">
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Nosso cardápio</h2>
+      <p>Abra o nosso cordel e descubra os sabores da Villa.</p>
+    </div>
+
+    <div class="cordel-convite" aria-hidden="true">
+      <span class="toque-icone">☝</span><span>Clique no cordel para abrir</span><span class="seta">↓</span>
+    </div>
+
+    <button class="cordel-fechado" id="abrirCordel" type="button" aria-label="Abrir o caderno e ver o cardápio" aria-expanded="false">
+      <span class="caderno">
+        <span class="caderno-folha">
+          <h3>Sabores da Villa</h3>
+          <span class="folha-subtitulo">O que sai mais quente da nossa cozinha</span>
+          <span class="folha-cardapio">
+            <span class="folha-item"><span class="folha-nome">Café coado da casa<span class="folha-desc">Torra média, na hora</span></span><span class="folha-preco">R$ 7</span></span>
+            <span class="folha-item"><span class="folha-nome">Cappuccino Villa<span class="folha-desc">Espresso, leite e canela</span></span><span class="folha-preco">R$ 12</span></span>
+            <span class="folha-item"><span class="folha-nome">Pão de queijo quente<span class="folha-desc">Porção com 6 unidades</span></span><span class="folha-preco">R$ 14</span></span>
+            <span class="folha-item"><span class="folha-nome">Misto quente na chapa<span class="folha-desc">Presunto e queijo derretido</span></span><span class="folha-preco">R$ 16</span></span>
+          </span>
+          <span class="toque">Toque para fechar</span>
+        </span>
+        <span class="caderno-capa"><span class="caderno-capa-conteudo"></span></span>
+      </span>
+    </button>
+
+    <div class="section-head" style="margin-top:34px;"><h2>Nossa história</h2></div>
+    <p>A Villa do Aroma nasceu da vontade de ter, na cidade, um lugar com cheiro de café passado na hora e de pão saindo do forno.</p>
+    <p>Aqui a receita é simples: ingredientes de verdade, mesas de conversa longa e aquele acolhimento de quem já é da casa desde a primeira visita.</p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="cardapio">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Cardápio</h2>
+      <p>Deslize para o lado e veja o que sai mais quente da nossa cozinha.</p>
+    </div>
+    <div class="menu-list">
+      <article class="menu-item">
+        <div class="info"><span class="name">Café coado da casa</span><span class="desc">Blend torra média, feito na hora em coador de pano</span><span class="price">R$ 7,00</span></div>
+        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_1.jpg" alt="Café coado da casa"><span class="add">+</span></div>
+      </article>
+      <article class="menu-item">
+        <div class="info"><span class="name">Cappuccino Villa</span><span class="desc">Espresso, leite vaporizado e uma pitada de canela</span><span class="price">R$ 12,00</span></div>
+        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_2.jpg" alt="Cappuccino Villa"><span class="add">+</span></div>
+      </article>
+      <article class="menu-item">
+        <div class="info"><span class="name">Pão de queijo quente</span><span class="desc">Porção de 6 unidades, direto do forno</span><span class="price">R$ 14,00</span></div>
+        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_3.jpg" alt="Pão de queijo quente"><span class="add">+</span></div>
+      </article>
+      <article class="menu-item">
+        <div class="info"><span class="name">Bolo de fubá com erva-doce</span><span class="desc">Fatia generosa, receita de família</span><span class="price">R$ 10,00</span></div>
+        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_4.jpg" alt="Bolo de fubá com erva-doce"><span class="add">+</span></div>
+      </article>
+      <article class="menu-item">
+        <div class="info"><span class="name">Misto quente na chapa</span><span class="desc">Pão artesanal, presunto e queijo derretido</span><span class="price">R$ 16,00</span></div>
+        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_5.jpg" alt="Misto quente na chapa"><span class="add">+</span></div>
+      </article>
+      <article class="menu-item">
+        <div class="info"><span class="name">Suco de frutas da estação</span><span class="desc">Sempre fresco, sabor conforme a colheita do dia</span><span class="price">R$ 9,00</span></div>
+        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_6.jpg" alt="Suco de frutas da estação"><span class="add">+</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="local">
+  <div class="wrap">
+    <div>
+      <h3>Horário</h3>
+      <p>Terça a sábado — 7h às 19h<br>Domingo — 7h às 12h<br>Segunda — fechado</p>
+    </div>
+    <div>
+      <h3>Onde estamos</h3>
+      <address>Rua da Matriz, próximo à praça da igreja<br>Bairro Centro</address>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fmark">Villa do Aroma</div>
+  <div class="social"><a href="#">Instagram</a><a href="#">WhatsApp</a></div>
+  <p class="fine">Villa do Aroma · Lanchonete e Cafeteria</p>
+</footer>
+
+<audio id="somAmbiente" src="musica-nordestina.mp3" loop preload="none"></audio>
+<div class="som-player" id="somPlayer">
+  <button id="somToggle" aria-label="Tocar som ambiente">►</button>
+  <span>Música</span>
+</div>
+
+<nav class="mobile-nav" aria-label="Navegação principal">
+  <a href="#inicio" class="active"><span>⌂</span>Início</a>
+  <a href="#sobre"><span>♡</span>História</a>
+  <a href="#cardapio"><span>☕</span>Cardápio</a>
+  <a href="#local"><span>⌖</span>Local</a>
+</nav>
+
+<script>
+const btn = document.getElementById('abrirCordel');
+btn?.addEventListener('click', () => {
+  const aberto = btn.classList.toggle('aberto');
+  btn.setAttribute('aria-expanded', aberto);
+});
+
+const links = document.querySelectorAll('.mobile-nav a');
+const secs = ['inicio','sobre','cardapio','local'].map(id => document.getElementById(id));
+function syncNav(){
+  const y = window.scrollY + innerHeight * .35;
+  let cur = 'inicio';
+  secs.forEach(s => { if (s && y >= s.offsetTop) cur = s.id; });
+  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+}
+addEventListener('scroll', syncNav, { passive:true });
+syncNav();
+
+/* --- música ambiente ao entrar no cardápio --- */
+const somAmbiente = document.getElementById('somAmbiente');
+const somToggle = document.getElementById('somToggle');
+const somPlayer = document.getElementById('somPlayer');
+function iniciarSom(){
+  if (!somAmbiente || !somAmbiente.paused) return;
+  somAmbiente.volume = .55;
+  somAmbiente.play().catch(()=>{ /* navegador bloqueou até haver um toque */ });
+}
+somAmbiente?.addEventListener('play', () => { somPlayer?.classList.add('ativo'); if (somToggle) somToggle.textContent = '❚❚'; });
+somAmbiente?.addEventListener('pause', () => { if (somToggle) somToggle.textContent = '►'; });
+somToggle?.addEventListener('click', (ev) => {
+  ev.stopPropagation();
+  if (!somAmbiente) return;
+  somAmbiente.paused ? iniciarSom() : somAmbiente.pause();
+  somPlayer?.classList.add('ativo');
+});
+
+const cardapioSec = document.getElementById('cardapio');
+if (cardapioSec) {
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if (e.isIntersecting) { iniciarSom(); obs.disconnect(); } });
+  }, { threshold:.3 });
+  obs.observe(cardapioSec);
+}
+/* navegadores só liberam áudio depois de um toque: garante o início no primeiro toque na página */
+document.addEventListener('click', function primeiroToque(){
+  iniciarSom();
+  document.removeEventListener('click', primeiroToque);
+}, { once:true });
+</script>
+</body>
+</html>
