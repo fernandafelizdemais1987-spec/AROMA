@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -17,6 +17,9 @@ body{background:var(--cream) var(--art) center/cover no-repeat fixed;color:var(-
 .hero .wrap{width:100%;padding-bottom:48px}
 .hero-content{color:#fff;text-align:center;max-width:620px;margin:auto}
 .hero-kicker{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:12px;font-weight:700}
+.status-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.1);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);padding:6px 14px;border-radius:999px;font-size:.8rem;font-weight:700;color:#fff;margin-bottom:16px}
+.status-dot{width:9px;height:9px;border-radius:50%;background:#3ecf5f;box-shadow:0 0 0 3px rgba(62,207,95,.25)}
+.status-badge.fechado .status-dot{background:#e5493f;box-shadow:0 0 0 3px rgba(229,73,63,.25)}
 .hero h1{font-family:Georgia,serif;font-size:clamp(2.5rem,12vw,5rem);line-height:.95;font-weight:500;margin-bottom:14px}
 .hero p{font-family:Georgia,serif;font-size:1.05rem;line-height:1.55;color:rgba(255,255,255,.9);max-width:42ch;margin:0 auto 24px}
 .hero-buttons{display:flex;justify-content:center;gap:10px}
@@ -74,9 +77,10 @@ section{padding:64px 0;background:rgba(241,223,174,.94)}
 .band .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:58px 0}
 .band h3{font-family:Georgia,serif;font-weight:500;font-style:italic;font-size:1.4rem;margin-bottom:12px;color:var(--gold-soft)}
 .band p,.band address{font-style:normal;font-size:.94rem;line-height:1.75;color:rgba(245,234,201,.85)}
+.band a.contato-link{color:var(--gold-soft);text-decoration:none;font-weight:700}
 footer{text-align:center;padding:42px 24px 38px;background:rgba(241,223,174,.96)}
 .fmark{font-family:Georgia,serif;font-style:italic;font-size:1.4rem}
-.social{display:flex;justify-content:center;gap:12px;margin-top:20px}
+.social{display:flex;justify-content:center;gap:12px;margin-top:20px;flex-wrap:wrap}
 .social a{min-height:44px;padding:0 18px;display:flex;align-items:center;justify-content:center;color:var(--ink);text-decoration:none;border:1px solid rgba(31,18,6,.2);border-radius:999px;font-size:.86rem;font-weight:700}
 .fine{margin-top:25px;font-size:.75rem;color:var(--coffee);opacity:.75}
 .mobile-nav{position:fixed;z-index:1000;left:12px;right:12px;bottom:calc(8px + env(safe-area-inset-bottom));height:58px;display:flex;align-items:center;justify-content:space-around;background:rgba(31,18,6,.94);border:1px solid rgba(255,255,255,.12);border-radius:22px;box-shadow:0 12px 35px rgba(0,0,0,.25);backdrop-filter:blur(14px)}
@@ -99,7 +103,8 @@ footer{text-align:center;padding:42px 24px 38px;background:rgba(241,223,174,.96)
 <header class="hero" id="inicio">
   <div class="wrap">
     <div class="hero-content">
-      <span class="hero-kicker">Lanchonete &amp; Cafeteria</span>
+      <span class="hero-kicker">Lanchonete &amp; Cafeteria</span><br>
+      <span class="status-badge" id="statusBadge"><span class="status-dot"></span><span id="statusTexto">Verificando horário…</span></span>
       <h1>Villa do Aroma</h1>
       <p>Café passado na hora, pão saindo do forno e aquele lugar gostoso para ficar mais um pouco.</p>
       <div class="hero-buttons">
@@ -129,10 +134,11 @@ footer{text-align:center;padding:42px 24px 38px;background:rgba(241,223,174,.96)
           <h3>Sabores da Villa</h3>
           <span class="folha-subtitulo">O que sai mais quente da nossa cozinha</span>
           <span class="folha-cardapio">
-            <span class="folha-item"><span class="folha-nome">Café coado da casa<span class="folha-desc">Torra média, na hora</span></span><span class="folha-preco">R$ 7</span></span>
-            <span class="folha-item"><span class="folha-nome">Cappuccino Villa<span class="folha-desc">Espresso, leite e canela</span></span><span class="folha-preco">R$ 12</span></span>
-            <span class="folha-item"><span class="folha-nome">Pão de queijo quente<span class="folha-desc">Porção com 6 unidades</span></span><span class="folha-preco">R$ 14</span></span>
-            <span class="folha-item"><span class="folha-nome">Misto quente na chapa<span class="folha-desc">Presunto e queijo derretido</span></span><span class="folha-preco">R$ 16</span></span>
+            <span class="folha-item"><span class="folha-nome">Café<span class="folha-desc">Coado, feito na hora</span></span><span class="folha-preco">R$ 5</span></span>
+            <span class="folha-item"><span class="folha-nome">Fanta<span class="folha-desc">Gelada, lata 350ml</span></span><span class="folha-preco">R$ 6</span></span>
+            <span class="folha-item"><span class="folha-nome">Empada de frango<span class="folha-desc">Massa crocante, recheio caprichado</span></span><span class="folha-preco">R$ 8</span></span>
+            <span class="folha-item"><span class="folha-nome">Tapioca de queijo<span class="folha-desc">Goma fresca na chapa</span></span><span class="folha-preco">R$ 10</span></span>
+            <span class="folha-item"><span class="folha-nome">Tapioca de frango<span class="folha-desc">Recheio generoso</span></span><span class="folha-preco">R$ 12</span></span>
           </span>
           <span class="toque">Toque para fechar</span>
         </span>
@@ -156,28 +162,24 @@ footer{text-align:center;padding:42px 24px 38px;background:rgba(241,223,174,.96)
     </div>
     <div class="menu-list">
       <article class="menu-item">
-        <div class="info"><span class="name">Café coado da casa</span><span class="desc">Blend torra média, feito na hora em coador de pano</span><span class="price">R$ 7,00</span></div>
-        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_1.jpg" alt="Café coado da casa"><span class="add">+</span></div>
+        <div class="info"><span class="name">Café</span><span class="desc">Coado na hora, quentinho</span><span class="price">R$ 5,00</span></div>
+        <div class="foto"><img src="https://i.ibb.co/CpzbhrGd/5bb06e85-fa06-44d9-b319-adcef248ddfa.jpg" alt="Café"><span class="add">+</span></div>
       </article>
       <article class="menu-item">
-        <div class="info"><span class="name">Cappuccino Villa</span><span class="desc">Espresso, leite vaporizado e uma pitada de canela</span><span class="price">R$ 12,00</span></div>
-        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_2.jpg" alt="Cappuccino Villa"><span class="add">+</span></div>
+        <div class="info"><span class="name">Fanta</span><span class="desc">Gelada, lata 350ml</span><span class="price">R$ 6,00</span></div>
+        <div class="foto"><img src="https://i.ibb.co/tMBbv2PK/e3e15dd4-bca2-4cae-8be8-0b5e51c7f0d0.jpg" alt="Fanta"><span class="add">+</span></div>
       </article>
       <article class="menu-item">
-        <div class="info"><span class="name">Pão de queijo quente</span><span class="desc">Porção de 6 unidades, direto do forno</span><span class="price">R$ 14,00</span></div>
-        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_3.jpg" alt="Pão de queijo quente"><span class="add">+</span></div>
+        <div class="info"><span class="name">Empada de frango</span><span class="desc">Massa crocante, recheio caprichado</span><span class="price">R$ 8,00</span></div>
+        <div class="foto"><img src="https://i.ibb.co/7dncPGjD/22d4d82b-4c5d-4e39-b5be-eb530d77bfb1.jpg" alt="Empada de frango"><span class="add">+</span></div>
       </article>
       <article class="menu-item">
-        <div class="info"><span class="name">Bolo de fubá com erva-doce</span><span class="desc">Fatia generosa, receita de família</span><span class="price">R$ 10,00</span></div>
-        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_4.jpg" alt="Bolo de fubá com erva-doce"><span class="add">+</span></div>
+        <div class="info"><span class="name">Tapioca de queijo</span><span class="desc">Goma fresca, na chapa</span><span class="price">R$ 10,00</span></div>
+        <div class="foto"><img src="https://i.ibb.co/cXtpCcQ3/777547a6-d21e-47ed-bdeb-87d81e1e6f0e.jpg" alt="Tapioca de queijo"><span class="add">+</span></div>
       </article>
       <article class="menu-item">
-        <div class="info"><span class="name">Misto quente na chapa</span><span class="desc">Pão artesanal, presunto e queijo derretido</span><span class="price">R$ 16,00</span></div>
-        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_5.jpg" alt="Misto quente na chapa"><span class="add">+</span></div>
-      </article>
-      <article class="menu-item">
-        <div class="info"><span class="name">Suco de frutas da estação</span><span class="desc">Sempre fresco, sabor conforme a colheita do dia</span><span class="price">R$ 9,00</span></div>
-        <div class="foto"><img src="COLE_AQUI_O_LINK_DO_IMGBB_6.jpg" alt="Suco de frutas da estação"><span class="add">+</span></div>
+        <div class="info"><span class="name">Tapioca de frango</span><span class="desc">Recheio generoso</span><span class="price">R$ 12,00</span></div>
+        <div class="foto"><img src="https://i.ibb.co/bgpTVNKF/726c46e8-5b75-4699-82d5-5014a94ed1f8.jpg" alt="Tapioca de frango"><span class="add">+</span></div>
       </article>
     </div>
   </div>
@@ -187,18 +189,26 @@ footer{text-align:center;padding:42px 24px 38px;background:rgba(241,223,174,.96)
   <div class="wrap">
     <div>
       <h3>Horário</h3>
-      <p>Terça a sábado — 7h às 19h<br>Domingo — 7h às 12h<br>Segunda — fechado</p>
+      <p>Segunda a sábado — 15h às 20h<br>Domingo — 7h às 12h<br>Quarta-feira — fechado</p>
+      <h3 style="margin-top:24px;">Contato</h3>
+      <p>
+        <a class="contato-link" href="https://wa.me/558382236318" target="_blank" rel="noopener">WhatsApp: (83) 8223-6318</a><br>
+        <a class="contato-link" href="https://instagram.com/villadoaroma" target="_blank" rel="noopener">Instagram: @villadoaroma</a>
+      </p>
     </div>
     <div>
       <h3>Onde estamos</h3>
-      <address>Rua da Matriz, próximo à praça da igreja<br>Bairro Centro</address>
+      <address>Rua Elias Cavalcante de Albuquerque, 486</address>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="fmark">Villa do Aroma</div>
-  <div class="social"><a href="#">Instagram</a><a href="#">WhatsApp</a></div>
+  <div class="social">
+    <a href="https://instagram.com/villadoaroma" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/558382236318" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
   <p class="fine">Villa do Aroma · Lanchonete e Cafeteria</p>
 </footer>
 
@@ -232,6 +242,33 @@ function syncNav(){
 }
 addEventListener('scroll', syncNav, { passive:true });
 syncNav();
+
+/* --- status aberto/fechado com base no horário de funcionamento --- */
+function atualizarStatus(){
+  const badge = document.getElementById('statusBadge');
+  const texto = document.getElementById('statusTexto');
+  if (!badge || !texto) return;
+  const agora = new Date();
+  const dia = agora.getDay(); // 0=dom,1=seg,...6=sab
+  const minutos = agora.getHours() * 60 + agora.getMinutes();
+  let aberto = false;
+  if (dia === 0) { // domingo 7h-12h
+    aberto = minutos >= 7*60 && minutos < 12*60;
+  } else if (dia === 3) { // quarta fechado
+    aberto = false;
+  } else { // seg,ter,qui,sex,sab 15h-20h
+    aberto = minutos >= 15*60 && minutos < 20*60;
+  }
+  if (aberto) {
+    badge.classList.remove('fechado');
+    texto.textContent = 'Aberto agora';
+  } else {
+    badge.classList.add('fechado');
+    texto.textContent = 'Fechado';
+  }
+}
+atualizarStatus();
+setInterval(atualizarStatus, 60000);
 
 /* --- música ambiente ao entrar no cardápio --- */
 const somAmbiente = document.getElementById('somAmbiente');
