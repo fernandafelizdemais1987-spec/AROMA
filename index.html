@@ -58,6 +58,8 @@ body{background:var(--cream) var(--art) center top/cover no-repeat fixed;color:v
 .folha-subtitulo{text-align:center;font-style:italic;font-size:.72rem;color:var(--coffee);margin-bottom:10px;display:block}
 .folha-cardapio{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:7px;padding-right:4px}
 .folha-item{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px dashed rgba(43,23,9,.4);padding-bottom:6px}
+.folha-historia{display:block;font-size:.82rem;line-height:1.5;color:var(--ink);border-bottom:1px dashed rgba(43,23,9,.3);padding-bottom:8px}
+.folha-historia:last-child{border-bottom:0}
 .folha-nome{font-size:.86rem;line-height:1.3}
 .folha-desc{display:block;font-family:Arial,sans-serif;font-size:.66rem;color:var(--coffee);margin-top:2px}
 .folha-preco{flex-shrink:0;font-weight:700;font-size:.86rem;color:var(--terracotta)}
@@ -149,8 +151,8 @@ footer{text-align:center;padding:42px 24px 38px;background:rgba(241,223,174,.78)
 <section id="sobre">
   <div class="wrap">
     <div class="section-head">
-      <h2>Nosso cardápio</h2>
-      <p>Abra o nosso cordel e descubra os sabores da Villa.</p>
+      <h2>Nossa história</h2>
+      <p>Abra o nosso cordel e conheça a nossa história.</p>
     </div>
 
     <div class="cordel-convite" aria-hidden="true">
@@ -160,24 +162,17 @@ footer{text-align:center;padding:42px 24px 38px;background:rgba(241,223,174,.78)
     <button class="cordel-fechado" id="abrirCordel" type="button" aria-label="Abrir o caderno e ver o cardápio" aria-expanded="false">
       <span class="caderno">
         <span class="caderno-folha">
-          <h3>Sabores da Villa</h3>
-          <span class="folha-subtitulo">O que sai mais quente da nossa cozinha</span>
+          <h3>Villa do Aroma</h3>
+          <span class="folha-subtitulo">A nossa história</span>
           <span class="folha-cardapio">
-            <span class="folha-item"><span class="folha-nome">Café<span class="folha-desc">Coado, feito na hora</span></span><span class="folha-preco">R$ 5</span></span>
-            <span class="folha-item"><span class="folha-nome">Fanta<span class="folha-desc">Gelada, lata 350ml</span></span><span class="folha-preco">R$ 6</span></span>
-            <span class="folha-item"><span class="folha-nome">Empada de frango<span class="folha-desc">Massa crocante, recheio caprichado</span></span><span class="folha-preco">R$ 8</span></span>
-            <span class="folha-item"><span class="folha-nome">Tapioca de queijo<span class="folha-desc">Goma fresca na chapa</span></span><span class="folha-preco">R$ 10</span></span>
-            <span class="folha-item"><span class="folha-nome">Tapioca de frango<span class="folha-desc">Recheio generoso</span></span><span class="folha-preco">R$ 12</span></span>
+            <span class="folha-historia">A Villa do Aroma nasceu da vontade de ter, na cidade, um lugar com cheiro de café passado na hora e de pão saindo do forno.</span>
+            <span class="folha-historia">Aqui a receita é simples: ingredientes de verdade, mesas de conversa longa e aquele acolhimento de quem já é da casa desde a primeira visita.</span>
           </span>
           <span class="toque">Toque para fechar</span>
         </span>
         <span class="caderno-capa"><span class="caderno-capa-conteudo"></span></span>
       </span>
     </button>
-
-    <div class="section-head" style="margin-top:34px;"><h2>Nossa história</h2></div>
-    <p>A Villa do Aroma nasceu da vontade de ter, na cidade, um lugar com cheiro de café passado na hora e de pão saindo do forno.</p>
-    <p>Aqui a receita é simples: ingredientes de verdade, mesas de conversa longa e aquele acolhimento de quem já é da casa desde a primeira visita.</p>
   </div>
 </section>
 
